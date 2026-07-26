@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ECO extends Staff {
     Student[] students;
     
@@ -21,21 +23,32 @@ public class ECO extends Staff {
         }
     }
 
-    public void shortListStudents(double minCgpa, int maxBacklog) {
-        System.out.println("Shortlisting students with CGPA >= " + minCgpa + " and Backlog <= " + maxBacklog);
+    public ArrayList<Student> shortListStudents(double minCgpa, int maxBacklog) {
+        ArrayList<Student> shortlisted = new ArrayList<>();
+
         for (Student student : students) {
-            if (student.getCgpa() >= minCgpa && student.getBacklog() <= maxBacklog) {
-                System.out.println("Name: " + student.getName());
-                System.out.println("Email: " + student.getEmail());
-                System.out.println("Phone: " + student.getPhone());
-                System.out.println("Roll No: " + student.getRollNo());
-                System.out.println("Year: " + student.getYear());
-                System.out.println("Department: " + student.getDepartment().getName());
-                System.out.println("CGPA: " + student.getCgpa());
-                System.out.println("Backlog: " + student.getBacklog());
-                System.out.println("Resume Link: " + student.getResumeLink());
-                System.out.println("---------------------------");
+            if (student != null &&
+                student.getCgpa() >= minCgpa &&
+                student.getBacklog() <= maxBacklog) {
+                shortlisted.add(student);
             }
         }
+
+        return shortlisted;
+    }
+
+    public ArrayList<Student> deptWiseShortListStudents(String departmentName, double minCgpa, int maxBacklog) {
+        ArrayList<Student> shortlisted = new ArrayList<>();
+
+        for (Student student : students) {
+            if (student != null &&
+                student.getDepartment().getName().equalsIgnoreCase(departmentName) &&
+                student.getCgpa() >= minCgpa &&
+                student.getBacklog() <= maxBacklog) {
+                shortlisted.add(student);
+            }
+        }
+
+        return shortlisted;
     }
 }

@@ -5,5 +5,23 @@ public class TPO extends Staff {
     }
 
     ECO[] ecos;
+
+    public void generateEligibleStudentsReport(double minCgpa, int maxBacklog) {
+        for (ECO eco : ecos) {
+            if (eco != null) {
+                eco.shortListStudents(minCgpa, maxBacklog);
+            }
+        }
+    }
+
+    public void generateDeptWiseEligibleStudentsReport(String departmentName, double minCgpa, int maxBacklog) {
+        for (ECO eco : ecos) {
+            if (eco != null) {
+                eco.deptWiseShortListStudents(departmentName, minCgpa, maxBacklog);
+            }
+        }
+    }
+
     
+
 }
