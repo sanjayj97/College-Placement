@@ -10,6 +10,14 @@ public class Department {
         this.hod = hod;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public void setHod(String hod) {
+        this.hod = hod;
+    }
+    
     public String getName() {
         return name;
     }

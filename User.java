@@ -13,6 +13,25 @@ class User{
         this.phone = phone;
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -43,13 +62,6 @@ class User{
         }
     }
 
-    public boolean updateProfile(String name, String email, String phone) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        System.out.println("Profile updated successfully!");
-        return true;
-    }
 
     public boolean logout() {
         System.out.println("Logout successful!");

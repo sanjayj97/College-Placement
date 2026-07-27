@@ -7,48 +7,29 @@ public class ECO extends Staff {
         super(userId, name, email, password, phone, staffId, designation, department);
     }
 
-    public void viewStudentProfiles() {
-        System.out.println("Viewing student profiles:");
-        for (Student student : students) {
-            System.out.println("Name: " + student.getName());
-            System.out.println("Email: " + student.getEmail());
-            System.out.println("Phone: " + student.getPhone());
-            System.out.println("Roll No: " + student.getRollNo());
-            System.out.println("Year: " + student.getYear());
-            System.out.println("Department: " + student.getDepartment().getName());
-            System.out.println("CGPA: " + student.getCgpa());
-            System.out.println("Backlog: " + student.getBacklog());
-            System.out.println("Resume Link: " + student.getResumeLink());
-            System.out.println("---------------------------");
-        }
+    public void receiveNotification(PlacementDrive drive, String message) {
+        System.out.println("Notification for ECO " + this.getName() + ": " + message + " for Placement Drive: " + drive.getDriveId());
     }
 
-    public ArrayList<Student> shortListStudents(double minCgpa, int maxBacklog) {
-        ArrayList<Student> shortlisted = new ArrayList<>();
-
-        for (Student student : students) {
-            if (student != null &&
-                student.getCgpa() >= minCgpa &&
-                student.getBacklog() <= maxBacklog) {
-                shortlisted.add(student);
+    public void viewEligibleStudents(double minCgpa, int maxBacklog, ArrayList<Student> allStudents) {
+        System.out.println("Eligible Students for Placement Drive:");
+        for (Student student : allStudents) {
+            if (student.getCgpa() >= minCgpa && student.getBacklog() <= maxBacklog) {
+                System.out.println("Name: " + student.getName() + ", Roll No: " + student.getRollNo() + ", CGPA: " + student.getCgpa() + ", Backlog: " + student.getBacklog());
             }
         }
-
-        return shortlisted;
     }
 
-    public ArrayList<Student> deptWiseShortListStudents(String departmentName, double minCgpa, int maxBacklog) {
-        ArrayList<Student> shortlisted = new ArrayList<>();
-
-        for (Student student : students) {
-            if (student != null &&
-                student.getDepartment().getName().equalsIgnoreCase(departmentName) &&
-                student.getCgpa() >= minCgpa &&
-                student.getBacklog() <= maxBacklog) {
-                shortlisted.add(student);
-            }
+    public void notifyStudents(ArrayList<Student> eligibleStudents, String message) {
+        for (Student student : eligibleStudents) {
+            student.receiveNotification(message);
         }
-
-        return shortlisted;
     }
+
+    public void updateApplicationStatus(Application application, String status) {
+        //application.setStatus(status);
+        System.out.println("Application status updated to: " + status + " for Student: " + application.getStudent().getName());
+    }
+
+
 }

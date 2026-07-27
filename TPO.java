@@ -19,34 +19,21 @@ public class TPO extends Staff {
 
     public void addCompany(Company company) {
         companies.add(company);
-        System.out.println("Company added successfully.");
     }
 
-    public void removeCompany(String companyId) {
-        for (int i = 0; i < companies.size(); i++) {
-            if (companies.get(i).getCompanyId().equals(companyId)) {
-                companies.remove(i);
-                System.out.println("Company removed successfully.");
-                return;
-            }
-        }
-        System.out.println("Company not found.");
-    }
 
     public void createPlacementDrive(PlacementDrive drive) {
         drives.add(drive);
         System.out.println("Placement drive created successfully.");
     }
 
-    public void closePlacementDrive(String driveId) {
-        for (PlacementDrive drive : drives) {
-            if (drive.getDriveId().equals(driveId)) {
-                drive.closeDrive();
-                System.out.println("Drive closed successfully.");
-                return;
-            }
+    public void closeDriveAfterResults(PlacementDrive drive) {
+        if (drives.contains(drive)) {
+            drive.closeDrive();
+            System.out.println("Placement drive closed successfully.");
+        } else {
+            System.out.println("Placement drive not found.");
         }
-        System.out.println("Drive not found.");
     }
 
     public void assignECO(ECO eco) {
@@ -83,10 +70,9 @@ public class TPO extends Staff {
         }
     }
 
-    public void generateEligibleStudentsReport(double minCgpa, int maxBacklog) {
-
+    public void notifyEcos(PlacementDrive drive, String message) {
         for (ECO eco : ecos) {
-            eco.shortListStudents(minCgpa, maxBacklog);
+            eco.receiveNotification(drive, message);
         }
     }
 }

@@ -9,7 +9,19 @@ public class Staff extends User {
         this.designation = designation;
         this.department = department;
     }
+    
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
+    }
 
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+    
     public String getStaffId() {
         return staffId;
     }
@@ -20,12 +32,6 @@ public class Staff extends User {
 
     public String getDepartment() {
         return department;
-    }
-
-    public boolean updateDesignation(String designation) {
-        this.designation = designation;
-        System.out.println("Designation updated successfully!");
-        return true;
     }
     
 }
