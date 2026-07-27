@@ -16,6 +16,14 @@ public class Application {
         status = "Applied";
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public PlacementDrive getDrive() {
+        return drive;
+    }
+
     public void submitApplication() {
         drive.addApplication(this);
     }

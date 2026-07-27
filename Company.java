@@ -20,28 +20,11 @@ public class Company {
         drives = new ArrayList<>();
     }
 
-    public void createDrive(PlacementDrive drive) {
-        drives.add(drive);
-    }
 
     public void updateCompanyDetails(String contactPerson, String email, String phone) {
         this.contactPerson = contactPerson;
         this.email = email;
         this.phone = phone;
-    }
-
-    public void viewDrives() {
-        for (PlacementDrive drive : drives) {
-            System.out.println(drive.getDriveDetails());
-        }
-    }
-
-    public void closeDrive(String driveId) {
-        for (PlacementDrive drive : drives) {
-            if (drive.getDriveId().equals(driveId)) {
-                drive.closeDrive();
-            }
-        }
     }
 
     public String getCompanyDetails() {
@@ -50,5 +33,9 @@ public class Company {
 
     public String getCompanyName() {
         return companyName;
+    }
+
+    public String getCompanyId() {
+        return companyId;
     }
 }
